@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <declare-styleable name="StringTagView">
+        <attr name="tagTextSize" format="dimension"/>
+        <attr name="tagBackgroundColor" format="reference|color"/>
+        <attr name="tagMargin" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="InfoTagView">
+        <attr name="info_tag_name" format="string"/>
+        <attr name="info_tag_name_size" format="dimension"/>
+        <attr name="info_tag_name_color" format="color"/>
+        <attr name="info_tag_value" format="string"/>
+        <attr name="info_tag_value_size" format="dimension"/>
+        <attr name="info_tag_value_color" format="color"/>
+        <attr name="info_tag_bg_color" format="color"/>
+        <attr name="info_tag_bg_conner" format="float"/>
+    </declare-styleable>
+
+</resources>

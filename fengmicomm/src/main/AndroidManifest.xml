@@ -1,0 +1,3 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fm.fengmicomm"
+    android:sharedUserId="android.uid.system"/>

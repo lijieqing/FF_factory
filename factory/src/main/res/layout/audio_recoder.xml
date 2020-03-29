@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AudioRecoder">
+
+    <SurfaceView
+        android:id="@+id/sfv_u_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </SurfaceView>
+
+    <TextView
+        android:id="@+id/tv_usb_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="U盘视频播放中"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_no_usb_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="未检测到 U 盘视频"
+        android:textColor="#FFF"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="PLATFORM" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/factory" />
+            <option value="$PROJECT_DIR$/factory_impl_common" />
+            <option value="$PROJECT_DIR$/factory_impl_dependency" />
+            <option value="$PROJECT_DIR$/factory_test_interf" />
+            <option value="$PROJECT_DIR$/fengmicomm" />
+            <option value="$PROJECT_DIR$/libZXing" />
+            <option value="$PROJECT_DIR$/libuvccamera" />
+            <option value="$PROJECT_DIR$/usbCameraCommon" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

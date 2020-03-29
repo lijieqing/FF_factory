@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HardwareList xmlns="http://www.fengmi.com">
+    <Project Name="EVA">
+        <Hardware Name="FM05-G" HardwareID="1" Desc="05G海外版" Keyboard="true"/>
+        <Hardware Name="M055FGN" HardwareID="12" Desc="055海外版" Keyboard="false"/>
+    </Project>
+    <Project Name="FRANKY">
+        <Hardware Name="L185JCN_1" HardwareID="11" Desc="185-4步马达" Keyboard="true"/>
+        <Hardware Name="L185JCN_0" HardwareID="12" Desc="185-8步马达" Keyboard="true"/>
+    </Project>
+    <Project Name="GOBLIN">
+        <Hardware Name="M135FCN-PRO" HardwareID="0" Desc="135 Pro" Keyboard="true"/>
+        <Hardware Name="M135JCN" HardwareID="1" Desc="135 米家" Keyboard="true"/>
+        <Hardware Name="M135FCN" HardwareID="10" Desc="135 LED" Keyboard="true"/>
+    </Project>
+    <Project Name="IRONMAN">
+        <Hardware Name="M045JCN" HardwareID="2" Desc="045 米家" Keyboard="true"/>
+        <Hardware Name="M085JCN" HardwareID="3" Desc="085 米家" Keyboard="true"/>
+    </Project>
+    <Project Name="JERRY">
+        <Hardware Name="L306ACF" HardwareID="0" Desc="306 光峰" Keyboard="true"/>
+        <Hardware Name="L406FCN" HardwareID="1" Desc="406 峰米" Keyboard="true"/>
+        <Hardware Name="L186FCN" HardwareID="2" Desc="185 峰米" Keyboard="true"/>
+        <Hardware Name="L176FCN-Pro" HardwareID="10" Desc="176 峰米 Pro" Keyboard="true"/>
+    </Project>
+    <Project Name="ANGLEE">
+        <Hardware Name="FM18" HardwareID="0" Desc="15s海外版" Keyboard="false"/>
+    </Project>
+    <Project Name="angleeUHD">
+        <Hardware Name="L156MGN" HardwareID="12" Desc="154k海外版" Keyboard="false"/>
+        <Hardware Name="L176FGN" HardwareID="6" Desc="峰米176海外版" Keyboard="true"/>
+    </Project>
+
+</HardwareList>

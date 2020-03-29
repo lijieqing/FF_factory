@@ -1,0 +1,4 @@
+rootProject.name='FactorySource'
+include ':factory', ':fengmicomm', ':libuvccamera', ':libZXing', ':factory_test_interf', ':usbCameraCommon'
+include ':factory_impl_common'
+include ':factory_impl_dependency'

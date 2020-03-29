@@ -1,0 +1,39 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml:1:1-3:48
+INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml:1:1-3:48
+INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml:1:1-3:48
+INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml:1:1-3:48
+INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml:1:1-3:48
+INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml:1:1-3:48
+INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml:1:1-3:48
+	package
+		ADDED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml:2:5-32
+		INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+		INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+	android:sharedUserId
+		ADDED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml:3:5-46
+	android:versionName
+		INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+		ADDED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml:1:1-3:48
+		INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+		ADDED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml:1:1-3:48
+		INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml:1:11-69
+uses-sdk
+INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+		ADDED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+		INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+		ADDED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml
+		INJECTED from /Users/lijie/AndroidStudioProjects/fengmi/FactorySource/fengmicomm/src/main/AndroidManifest.xml

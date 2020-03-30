@@ -1,8 +1,5 @@
 package com.fengmi.factory_test_interf.sdk_globle;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public final class SettingManager {
     /****************
      * factory property

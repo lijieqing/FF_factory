@@ -25,12 +25,7 @@ allprojects {
     }
     gradle.projectsEvaluated {
         tasks.withType(JavaCompile) {
-            options.compilerArgs.add('-Xbootclasspath/p:/Users/lijie/fm-libs/aml-fm18.jar')
-            options.compilerArgs.add('-Xbootclasspath/p:/Users/lijie/fm-libs/fm18-fengmi-platform.jar')
-            options.compilerArgs.add('-Xbootclasspath/p:/Users/lijie/fm-libs/fm18-droid.jar')
-            options.compilerArgs.add('-Xbootclasspath/p:/Users/lijie/fm-libs/motor-callback.jar')
-            options.compilerArgs.add('-Xbootclasspath/p:/Users/lijie/fm-libs/fm18-projector.jar')
-            options.compilerArgs.add('-Xbootclasspath/p:/Users/lijie/fm-libs/fm18-sound.jar')
+            options.compilerArgs.add('-Xbootclasspath/p:/Users/lijie/fm-libs/fengmi_sdk_goblin.jar')
             options.compilerArgs.add('-Xbootclasspath/p:/Users/lijie/fm-libs/p_frameworks.jar')
         }
     }

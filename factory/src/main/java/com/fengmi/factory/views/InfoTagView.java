@@ -19,7 +19,7 @@ public class InfoTagView extends View {
     private float mTagValueSize;
     private int mTagNameColor;
     private int mTagValueColor;
-    private int mTagBackgroundColor;
+    private int mTagBackgroundColor = Color.LTGRAY;
 
     private String mTagName;
     private String mTagValue;
@@ -30,10 +30,10 @@ public class InfoTagView extends View {
     private Paint mTXPaint;
     private Paint mBGPaint;
 
-    private int mMargin;
-    private int mTXMargin;
+    private int mMargin = 3;
+    private int mTXMargin = 3;
 
-    private float mConner;
+    private float mConner = 8f;
 
 
     public InfoTagView(Context context) {

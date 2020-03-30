@@ -34,9 +34,9 @@ dependencies {
 //    implementation files('/Users/lijie/fm-libs/droid_api_135pro.jar')
 //    implementation files('/Users/lijie/fm-libs/droid_tv_135pro.jar')
 
-    implementation files('/Users/lijie/fm-libs/fengmi_sdk_156g.jar')
-    implementation files('/Users/lijie/fm-libs/droid_api_156g.jar')
-    implementation files('/Users/lijie/fm-libs/droid_tv_156g.jar')
+    api files('/Users/lijie/fm-libs/fengmi_sdk_156g.jar')
+    api files('/Users/lijie/fm-libs/droid_api_156g.jar')
+    api files('/Users/lijie/fm-libs/droid_tv_156g.jar')
 
     compileOnly files('/Users/lijie/fm-libs/p_frameworks.jar')
 

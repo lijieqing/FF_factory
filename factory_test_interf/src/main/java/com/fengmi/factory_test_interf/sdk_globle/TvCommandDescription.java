@@ -1,10 +1,3 @@
-/* project description:
- * now the TV projects are:
- * --- gladiator
- *  -- hancock
- *
- *
- * */
 package com.fengmi.factory_test_interf.sdk_globle;
 
 import android.content.ComponentName;

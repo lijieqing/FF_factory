@@ -51,7 +51,6 @@ public class BatteryView extends ViewGroup {
     private Handler mainHandler = null;
 
     private BatteryInfoTask batteryInfoTask = new BatteryInfoTask();
-    ;
 
     private int mWidth;
     private int mHeight;

@@ -26,7 +26,7 @@ public class AndroidOSManagerImpl implements AndroidOSManagerInterf {
     private StorageManager storageManager;
     private Context mContext;
 
-    public AndroidOSManagerImpl(Context context) {
+    AndroidOSManagerImpl(Context context) {
         powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         storageManager = (StorageManager) context.getSystemService(Context.STORAGE_SERVICE);
         mHdmiControlManager = (HdmiControlManager) context.getSystemService("hdmi_control");

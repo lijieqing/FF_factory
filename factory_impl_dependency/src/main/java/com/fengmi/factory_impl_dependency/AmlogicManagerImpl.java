@@ -31,8 +31,7 @@ public class AmlogicManagerImpl implements AmlogicManagerInterf {
         int[] temp = new int[size];
         byte[] data = new byte[size];
         // TODO: 2020/3/28 调整 Amlogic 接口
-        //mSystenControl.readUnifyKeyByte(keyName, temp, size);
-        //mSystenControl.readAttestationKey(keyName, temp, size);
+        mSystenControl.readUnifyKeyByte(keyName, temp, size);
         for (int i = 0; i < temp.length; i++) {
             data[i] = (byte) temp[i];
         }
@@ -57,6 +56,11 @@ public class AmlogicManagerImpl implements AmlogicManagerInterf {
     @Override
     public boolean writePlayreadyKey(String dtsName, int[] key_data, int length) {
         return mSystenControl.writePlayreadyKey(dtsName, key_data, length);
+    }
+
+    @Override
+    public boolean writeNetflixKey(String dtsName, int[] key_data, int length) {
+        return mSystenControl.writeNetflixKey(dtsName, key_data, length);
     }
 
     @Override

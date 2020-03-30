@@ -11,5 +11,6 @@ public class SDK_Dependency extends SDK {
         SDKManager.setAmlogicManagerInterf(new AmlogicManagerImpl());
         SDKManager.setAndroidOSManagerInterf(new AndroidOSManagerImpl(context));
         SDKManager.setSensorManager(new SensorManagerImpl(context));
+        SDKManager.setFengManagerInterf(new FengManagerImpl(context));
     }
 }

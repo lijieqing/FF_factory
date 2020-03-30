@@ -33,6 +33,8 @@ public interface AmlogicManagerInterf extends BaseMiddleware {
 
     boolean writePlayreadyKey(String dtsName, int[] key_data, int length);
 
+    boolean writeNetflixKey(String dtsName, int[] key_data, int length);
+
     boolean writeSysFs(String path, String value);
 
     String readSysFs(String path);

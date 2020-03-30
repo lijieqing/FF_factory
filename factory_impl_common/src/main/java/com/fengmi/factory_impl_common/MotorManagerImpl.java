@@ -119,7 +119,7 @@ public class MotorManagerImpl implements MotorManagerInterf {
             CountDownLatch latch = new CountDownLatch(1);
 
             Intent intent = new Intent();
-            intent.setComponent(new ComponentName("com.fengmi.factory_test", "com.fengmi.factory_test.activity.PicTest"));
+            intent.setComponent(new ComponentName("com.fengmi.factory", "com.fengmi.factory.activity.PicTest"));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra("commandid", "14CB");
             intent.putExtra("commandparas", "fake");

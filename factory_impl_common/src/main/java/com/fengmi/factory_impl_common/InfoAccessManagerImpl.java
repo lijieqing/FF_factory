@@ -31,6 +31,7 @@ public class InfoAccessManagerImpl implements InfoAccessManagerInterf {
         }
     }
 
+
     public boolean setPcbaSerialNumber(String sn) {
         boolean ret = false;
         ret = writePcbaSn(sn);
@@ -209,12 +210,14 @@ public class InfoAccessManagerImpl implements InfoAccessManagerInterf {
 
     @Override
     public boolean setNetflixKey(String param) {
-        return false;
+        if (TextUtils.isEmpty(param))
+            return false;
+        return setKeys(param, NETFLIX_KEY_FILEPATH, NETFLIX_KEY_LEN);
     }
 
     @Override
     public byte[] getNetflixKey() {
-        return new byte[0];
+        return getKeys(NETFLIX_KEY_FILEPATH, NETFLIX_KEY_LEN);
     }
 
     @Override
@@ -551,9 +554,6 @@ public class InfoAccessManagerImpl implements InfoAccessManagerInterf {
                 }
                 ret = SDKManager.getAmlogicManagerInterf().writeHdcpRX14Key(key_int, key_len);
                 Log.e(TAG, " key active result : " + ret);
-                // if (ret) {
-                //     ret = enableKeyFlag(name);
-                // }
                 break;
             case "hdcp_22_rx":
                 key_dts_name = "hdcp2_rx";
@@ -563,65 +563,38 @@ public class InfoAccessManagerImpl implements InfoAccessManagerInterf {
                 //special interface
                 ret = SDKManager.getAmlogicManagerInterf().writeHdcpRXImg(key_file_path);
                 Log.e(TAG, " key active result : " + ret);
-                // if (ret) {
-                //     ret = enableKeyFlag(name);
-                // }
                 break;
             case "secure_boot":
                 key_dts_name = "secure_boot_set";
                 key_file_path = AML_SECURE_BOOT_KEY_FILEPATH;
                 key_len = SECURE_BOOT_KEY_LEN;
 
-                //ret = writeKey2Dts(key_file_path, key_dts_name, key_len);
                 ret = writeAttestationKey(key_file_path, key_dts_name, key_len);
                 break;
             case "playready_pub":
-                key_dts_name = "prpubkeybox";
-                key_file_path = PLAYREADY_PUBLIC_KEY_FILEPATH;
-                key_len = PLAYREADY_PUB_KEY_LEN;
-
-                //ret = writeKey2Dts(key_file_path, key_dts_name, key_len);
-                ret = writeAttestationKey(key_file_path, key_dts_name, key_len);
-                //ret = writePlayReadyKey(key_file_path, key_dts_name, key_len);
-                break;
-            case "playready_pri":
-                key_dts_name = "prprivkeybox";
-                key_file_path = PLAYREADY_PRIVATE_KEY_FILEPATH;
-                key_len = PLAYREADY_PRI_KEY_LEN;
-
-                //ret = writeKey2Dts(key_file_path, key_dts_name, key_len);
-                ret = writeAttestationKey(key_file_path, key_dts_name, key_len);
-                //ret = writePlayReadyKey(key_file_path, key_dts_name, key_len);
-                break;
             case "pr_pub":
                 key_dts_name = "prpubkeybox";
                 key_file_path = PLAYREADY_PUBLIC_KEY_FILEPATH;
                 key_len = PLAYREADY_PUB_KEY_LEN;
 
-                //ret = writeKey2Dts(key_file_path, key_dts_name, key_len);
-                //ret = writeAttestationKey(key_file_path, key_dts_name, key_len);
                 ret = writePlayReadyKey(key_file_path, key_dts_name, key_len);
                 break;
+            case "playready_pri":
             case "pr_pri":
                 key_dts_name = "prprivkeybox";
                 key_file_path = PLAYREADY_PRIVATE_KEY_FILEPATH;
                 key_len = PLAYREADY_PRI_KEY_LEN;
 
-                //ret = writeKey2Dts(key_file_path, key_dts_name, key_len);
-                //ret = writeAttestationKey(key_file_path, key_dts_name, key_len);
                 ret = writePlayReadyKey(key_file_path, key_dts_name, key_len);
                 break;
+
             case "widevine":
                 key_dts_name = "widevinekeybox";
                 key_file_path = WIDEWINE_KEY_FILEPATH;
                 key_len = WIDEWINE_KEY_LEN;
 
-                //ret = writeKey2Dts(key_file_path, key_dts_name, key_len);
                 ret = writeAttestationKey(key_file_path, key_dts_name, key_len);
                 Log.e(TAG, " key active result : " + ret);
-                // if (ret) {
-                //     ret = enableKeyFlag(name);
-                // }
                 break;
             case "attestation":
                 key_dts_name = "attestationkeybox";
@@ -630,9 +603,14 @@ public class InfoAccessManagerImpl implements InfoAccessManagerInterf {
 
                 ret = writeAttestationKey(key_file_path, key_dts_name, key_len);
                 Log.e(TAG, " key active result : " + ret);
-                // if (ret) {
-                //     ret = enableKeyFlag(name);
-                // }
+                break;
+            case "netflix":
+                key_dts_name = "netflix_mgkid";
+                key_file_path = NETFLIX_KEY_FILEPATH;
+                key_len = NETFLIX_KEY_LEN;
+
+                ret = writeNetflixKey(key_file_path, key_dts_name, key_len);
+                Log.e(TAG, " key active result : " + ret);
                 break;
             case "ternary":
                 ret = mapTernaryKey();
@@ -814,6 +792,27 @@ public class InfoAccessManagerImpl implements InfoAccessManagerInterf {
         return SDKManager.getAmlogicManagerInterf().writePlayreadyKey(dtsName, key_data, key_data.length);
     }
 
+    private boolean writeNetflixKey(String path, String dtsName, int len) {
+        Log.i(TAG, "writeNetflixKey method begin -- dtsName:" + dtsName);
+
+        byte[] key_byte = readKey2Buffer(path, len);
+
+        Log.i(TAG, "writeKey method begin -- dtsName:" + dtsName);
+        Log.i(TAG, "=============================================");
+        Log.i(TAG, "Netflix key value is :" + new String(key_byte));
+        Log.i(TAG, "=============================================");
+
+
+        int[] key_data = new int[len];
+        Log.i(TAG, "writeKey ------- key_byte[] -length- " + key_byte.length);
+        for (int i = 0; i < key_byte.length; i++) {
+            key_data[i] = key_byte[i];
+        }
+        Log.i(TAG, "key data loaded -- key_data length:" + key_data.length);
+
+        return SDKManager.getAmlogicManagerInterf().writeNetflixKey(dtsName, key_data, key_data.length);
+    }
+
     private byte[] readKey2Buffer(String path, int len) {
         byte[] key = new byte[len];
         Log.i(TAG, "Get Key to buffer");
@@ -982,6 +981,11 @@ public class InfoAccessManagerImpl implements InfoAccessManagerInterf {
                 keyLen = PLAYREADY_PRI_KEY_LEN;
                 mapKey = "PLAY_PRI";
                 break;
+            case "netflix":
+                keyPath = NETFLIX_KEY_FILEPATH;
+                keyLen = NETFLIX_KEY_LEN;
+                mapKey = "NETFLIX";
+                break;
             case "ternary":
                 keyPath = TERNARY_KEY_FILEPATH;
                 keyLen = TERNARY_KEY_LEN;
@@ -1053,6 +1057,9 @@ public class InfoAccessManagerImpl implements InfoAccessManagerInterf {
             case "playready_pri":
             case "pr_pri":
                 mapKey = "PLAY_PRI";
+                break;
+            case "netflix":
+                mapKey = "NETFLIX";
                 break;
             case "ternary":
                 mapKey = "TERNARY";

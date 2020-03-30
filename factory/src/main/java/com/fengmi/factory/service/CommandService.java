@@ -552,19 +552,16 @@ public class CommandService extends BaseCmdService {
                 break;
 
 
-            /***test write factory pid */
             case TvCommandDescription.CMDID_FACTORY_PID_WRITE:
                 mBinder.setResult_bool(cmdid, SDKManager.getInfoAccessManager().setFactoryPID(param));
                 break;
 
 
-            /**test read factory pid */
             case TvCommandDescription.CMDID_FACTORY_PID_READ:
                 result = SDKManager.getInfoAccessManager().getFactoryPID();
                 mBinder.setResult_string(cmdid, result);
                 break;
 
-            /**新增led控制 */
             case TvCommandDescription.CMDID_LED_TEST:
                 mBinder.setResult_bool(cmdid, SDKManager.getUtilManager().setLedLightStat(param));
                 break;
@@ -591,8 +588,7 @@ public class CommandService extends BaseCmdService {
                 break;
 
 
-            case TvCommandDescription.CMDID_USB_LIST_SIZE//USB List Size get
-                    :
+            case TvCommandDescription.CMDID_USB_LIST_SIZE:
                 mBinder.setResult_string(cmdid, USBUtils.getUSBListSize(this));
                 break;
 
@@ -615,8 +611,7 @@ public class CommandService extends BaseCmdService {
                 }
                 mBinder.setResult_string(cmdid, result);
                 break;
-            case TvCommandDescription.CMDID_HDMI_1_CEC//HDMI_1 CEC test
-                    :
+            case TvCommandDescription.CMDID_HDMI_1_CEC:
                 value[0] = (byte) SDKManager.getMediaTestManager().hdmiTestCec(HDMI1_ID);
                 mBinder.setResult_byte(cmdid, value);
                 break;
@@ -663,38 +658,32 @@ public class CommandService extends BaseCmdService {
                 break;
 
 
-            case TvCommandDescription.CMDID_ENABLE_SPEAKER//ENABLE_SPEAKER test
-                    :
+            case TvCommandDescription.CMDID_ENABLE_SPEAKER:
                 mBinder.setResult_bool(cmdid, SDKManager.getAudioTestManager().audioSwitchSpeaker(false));
                 break;
 
 
-            case TvCommandDescription.CMDID_DISABLE_SPEAKER//DISABLE_SPEAKER test
-                    :
+            case TvCommandDescription.CMDID_DISABLE_SPEAKER:
                 mBinder.setResult_bool(cmdid, SDKManager.getAudioTestManager().audioSwitchSpeaker(true));
                 break;
 
 
-            case TvCommandDescription.CMDID_ENABLE_SPDIF//SPDIF enable test
-                    :
+            case TvCommandDescription.CMDID_ENABLE_SPDIF:
                 mBinder.setResult_bool(cmdid, SDKManager.getAudioTestManager().audioSwitchSpdif(0));
                 break;
 
 
-            case TvCommandDescription.CMDID_HDMI_ARC_ON//HDMI_1 ARC test
-                    :
+            case TvCommandDescription.CMDID_HDMI_ARC_ON:
                 mBinder.setResult_bool(cmdid, SDKManager.getAudioTestManager().audioSwitchArc(0));
                 break;
 
 
-            case TvCommandDescription.CMDID_DISABLE_SPDIF// SPDIF disable test
-                    :
+            case TvCommandDescription.CMDID_DISABLE_SPDIF:
                 mBinder.setResult_bool(cmdid, SDKManager.getAudioTestManager().audioSwitchSpdif(1));
                 break;
 
 
-            case TvCommandDescription.CMDID_HDMI_ARC_OFF//HDMI_1 ARC test
-                    :
+            case TvCommandDescription.CMDID_HDMI_ARC_OFF:
                 mBinder.setResult_bool(cmdid, SDKManager.getAudioTestManager().audioSwitchArc(1));
                 break;
 
@@ -766,7 +755,6 @@ public class CommandService extends BaseCmdService {
                 mBinder.setResult_bool(cmdid, retFlag);
                 break;
             case TvCommandDescription.CMDID_IR_STOP:
-                retFlag = false;
                 if (getTvRunningWindCmd() != null)
                     TvSetControlMsg(getTvRunningWindCmd(), FactorySetting.COMMAND_TASK_BUSINESS, cmdid, param);
                 break;
@@ -777,8 +765,6 @@ public class CommandService extends BaseCmdService {
 
 
             case TvCommandDescription.CMDID_SERIAL_READ:
-
-
             case TvCommandDescription.CMDID_N_PCBA_SERIAL_READ:
                 result = SDKManager.getInfoAccessManager().getPcbaSerialNumber();
                 if (null == result) {
@@ -786,15 +772,12 @@ public class CommandService extends BaseCmdService {
                 }
                 mBinder.setResult_string(cmdid, result);
                 break;
-            case TvCommandDescription.CMDID_BT_MAC_WRITE//bt mac write
-                    :
+            case TvCommandDescription.CMDID_BT_MAC_WRITE:
                 mBinder.setResult_bool(cmdid, SDKManager.getInfoAccessManager().setBluetoothMac(param));
                 break;
 
 
             case TvCommandDescription.CMDID_BT_MAC_READ:
-
-
             case TvCommandDescription.CMDID_N_BT_MAC_READ:
                 result = SDKManager.getInfoAccessManager().getBluetoothMac();
                 if (null == result) {
@@ -802,16 +785,12 @@ public class CommandService extends BaseCmdService {
                 }
                 mBinder.setResult_string(cmdid, result);
                 break;
-            case TvCommandDescription.CMDID_ETH_MAC_WRITE//eth mac write
-                    :
+            case TvCommandDescription.CMDID_ETH_MAC_WRITE:
                 mBinder.setResult_bool(cmdid, SDKManager.getInfoAccessManager().setEthernetMac(param));
                 break;
 
 
-            case TvCommandDescription.CMDID_ETH_MAC_READ//eth mac read test
-                    :
-
-
+            case TvCommandDescription.CMDID_ETH_MAC_READ:
             case TvCommandDescription.CMDID_N_ETH_MAC_READ:
                 result = SDKManager.getInfoAccessManager().getEthernetMac();
                 if (null == result) {
@@ -836,7 +815,6 @@ public class CommandService extends BaseCmdService {
                 mBinder.setResult_bool(cmdid, SDKManager.getInfoAccessManager().setHdcp14Key(Param));
                 break;
 
-
             case TvCommandDescription.CMDID_HDCP_KEY_READ:
                 mBinder.setResult_byte(cmdid, SDKManager.getInfoAccessManager().getHdcp14Key());
                 break;
@@ -844,7 +822,6 @@ public class CommandService extends BaseCmdService {
             case TvCommandDescription.CMDID_MIRACAST_KEY_WRITE:
                 mBinder.setResult_bool(cmdid, SDKManager.getInfoAccessManager().setHdcp20Key(Param));
                 break;
-
 
             case TvCommandDescription.CMDID_MIRACAST_KEY_READ:
                 byte[] Mkey = SDKManager.getInfoAccessManager().getHdcp20Key();
@@ -854,11 +831,9 @@ public class CommandService extends BaseCmdService {
                 mBinder.setResult_bool(cmdid, SDKManager.getInfoAccessManager().setPcbaManufactureNumber(param));
                 break;
 
-
             case TvCommandDescription.CMDID_ATTESTATION_KEY_WRITE:
                 mBinder.setResult_bool(cmdid, SDKManager.getInfoAccessManager().setAttestationKey(Param));
                 break;
-
 
             case TvCommandDescription.CMDID_ATTESTATION_KEY_READ:
                 byte[] attestation = SDKManager.getInfoAccessManager().getAttestationKey();
@@ -878,10 +853,7 @@ public class CommandService extends BaseCmdService {
                 break;
 
 
-            //--------------------new key:widewine google key  end---------
             case TvCommandDescription.CMDID_MANUFACTURE_ID_READ:
-
-
             case TvCommandDescription.CMDID_N_PCBA_MANU_READ:
                 result = SDKManager.getInfoAccessManager().getPcbaManufactureNumber();
                 if (null == result) {
@@ -901,8 +873,6 @@ public class CommandService extends BaseCmdService {
             case TvCommandDescription.CMDID_N_ASSM_SERIAL_WRITE:
                 mBinder.setResult_bool(cmdid, SDKManager.getInfoAccessManager().setAssmSerialNumber(param));
                 break;
-
-
             case TvCommandDescription.CMDID_N_ASSM_SERIAL_READ:
                 result = SDKManager.getInfoAccessManager().getAssmSerialNumber();
                 if (null == result) {
@@ -964,7 +934,6 @@ public class CommandService extends BaseCmdService {
             case TvCommandDescription.CMDID_N_SET_GPIO_OUT_STAT:
                 mBinder.setResult_bool(cmdid, SDKManager.getUtilManager().setGpioOut(param));
                 break;
-
 
             case TvCommandDescription.CMDID_N_GET_GPIO_IN_STAT:
                 byte[] in = new byte[1];

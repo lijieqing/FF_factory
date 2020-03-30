@@ -139,7 +139,7 @@ public class SensorManagerImpl implements SensorManagerInterf {
         int[] res = new int[size];
         byte[] data = new byte[size];
         SystemControlManager sysCtl = SystemControlManager.getInstance();
-        //sysCtl.readUnifyKeyByte("tof_calibration", res, size);
+        sysCtl.readUnifyKeyByte("tof_calibration", res, size);
         for (int i = 0; i < res.length; i++) {
             data[i] = (byte) res[i];
         }

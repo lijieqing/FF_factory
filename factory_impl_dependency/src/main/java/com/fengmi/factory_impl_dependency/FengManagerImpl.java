@@ -1,7 +1,6 @@
 package com.fengmi.factory_impl_dependency;
 
 import android.content.Context;
-import android.os.RemoteException;
 import android.util.Log;
 
 import com.fengmi.factory_test_interf.sdk_interf.AFCallback;
@@ -16,9 +15,7 @@ import fengmi.hardware.KeystoneManager;
 import fengmi.hardware.MotorFocusCallback;
 import fengmi.hardware.MotorManager;
 import fengmi.hardware.SoundManager;
-import fengmi.hardware.TofManager;
 import fengmi.hardware.display.ProjectorManager;
-import vendor.fengmi.hardware.tof.V1_0.ITofService;
 
 public class FengManagerImpl implements FengManagerInterf {
     private SoundManager soundManager;
@@ -26,8 +23,6 @@ public class FengManagerImpl implements FengManagerInterf {
     private MotorManager motorManager;
     private ProjectorManager projectorManager;
     private BootenvManager bootenvManager;
-    private TofManager tofManager;
-    private ITofService tofService;
 
     FengManagerImpl(Context context) {
         this.soundManager = SoundManager.getInstance(context);
@@ -35,12 +30,6 @@ public class FengManagerImpl implements FengManagerInterf {
         this.motorManager = MotorManager.getInstance(context);
         this.projectorManager = ProjectorManager.getInstance(context);
         this.bootenvManager = BootenvManager.getInstance(context);
-        try {
-            this.tofService = ITofService.getService();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        this.tofManager = TofManager.getInstance(context);
     }
 
     @Override

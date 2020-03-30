@@ -18,9 +18,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Projector_Sensor implements SensorEventListener {
-    public static final String G_SENSOR_X = "x";
-    public static final String G_SENSOR_Y = "y";
-    public static final String G_SENSOR_Z = "z";
+    private static final String G_SENSOR_X = "x";
+    private static final String G_SENSOR_Y = "y";
+    private static final String G_SENSOR_Z = "z";
     private static final String TAG = "Factory_Sensor";
     private static final String G_SENSOR_KEY = "g_sensor_standard";
     private static boolean collecting = false;
@@ -62,6 +62,12 @@ public class Projector_Sensor implements SensorEventListener {
                 }
                 break;
             case "goblin":
+                if (SDKManager.getHwManager().getHW().getHardwareID().equals("10")){
+                    Log.d(TAG, "in 135 LED Case startOldSensorCollection");
+                    startOldSensorCollection();
+                } else {
+                    startNewSensorCollection(0);
+                }
             case "franky":
             case "eva":
                 startOldSensorCollection();

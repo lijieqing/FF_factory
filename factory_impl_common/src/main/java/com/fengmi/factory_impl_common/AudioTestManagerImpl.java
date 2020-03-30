@@ -11,11 +11,9 @@ import com.fengmi.factory_test_interf.sdk_interf.FengManagerInterf;
 import java.io.IOException;
 
 public class AudioTestManagerImpl implements AudioTestManagerInterf {
-    private Context mContext;
     private AudioManager mAudioManager;
 
     AudioTestManagerImpl(Context context) {
-        mContext = context;
         mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     }
 

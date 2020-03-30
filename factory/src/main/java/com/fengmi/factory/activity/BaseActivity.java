@@ -163,16 +163,16 @@ public abstract class BaseActivity extends Activity {
 
         String action = null;
         Log.d(TAG, "FactoryActivity onCreate");
-        Intent intent = new Intent();
+        Intent intent = getIntent();
         mCaseId = intent.getStringExtra(FactorySetting.EXTRA_CMDID);
         mCasePara = intent.getStringExtra(FactorySetting.EXTRA_CMDPARA);
         if (mCaseId == null) {
-            Log.e(TAG, "not support cmd name:$mCaseId param:"+mCasePara);
+            Log.e(TAG, "not support cmd name:" + mCaseId + " param:" + mCasePara);
             finish();
             return;
         }
         mCaseName = getLocalClassName();
-        Log.i(TAG, "caseId:$mCaseId para:$mCasePara activity:"+mCaseName);
+        Log.i(TAG, "caseId:$mCaseId para:" + mCasePara + " activity:" + mCaseName);
 
         if (mCaseId.substring(0, 1).equals(FactorySetting.COMMAND_PRODUCT_TYPE_TV)) {
             Log.i(TAG, "product: TV Type");

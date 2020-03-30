@@ -139,6 +139,7 @@ public class CommandTxWrapper {
                                 //重发机制
                                 int retry = 0;
                                 for (int i = 0; i < 3; i++) {
+                                    Log.d(TAG, "do not received ACK,wo tried " + retry + " times");
                                     CP210xCommand ack = USBContext.ackMap.get(cmd.getCommandID());
                                     if (ack != null) {
                                         USBContext.ackMap.remove(cmd.getCommandID());

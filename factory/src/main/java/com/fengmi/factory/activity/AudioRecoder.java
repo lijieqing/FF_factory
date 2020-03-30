@@ -139,7 +139,6 @@ public class AudioRecoder extends BaseActivity implements
     public void handleCommand(String cmdid, String param) {
         int i = 0;
         super.handleCommand(cmdid, param);
-
     }
 
 

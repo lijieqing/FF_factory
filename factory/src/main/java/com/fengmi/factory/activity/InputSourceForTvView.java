@@ -100,7 +100,6 @@ public class InputSourceForTvView extends BaseActivity {
     public void handleCommand(String cmdid, String param) {
         int setTime;
         super.handleCommand(cmdid, param);
-        setResult(cmdid, true, false);
         Log.i(TAG, "handleCommand param is :[" + param + "]");
     }
 

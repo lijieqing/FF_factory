@@ -161,6 +161,7 @@ public abstract class BaseCmdService extends Service implements CommandSource.On
         }
         // add task running check
         myHandler.sendMessageDelayed(myHandler.obtainMessage(CHECK_COMMAND_RUNNING, c), COMMAND_STARTRUN_TIMEOUT);
+        Log.d(TAG,"BaseCmdService TvhandleCommandForActivity " +c.toString());
         //launch task
         Intent intent = new Intent();
         intent.setComponent(component);

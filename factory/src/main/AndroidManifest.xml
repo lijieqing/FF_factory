@@ -44,10 +44,6 @@
             android:name=".service.CommandService"
             android:enabled="true"
             android:exported="true"></service>
-        <service
-            android:name=".test.AutoRuntService"
-            android:enabled="true"
-            android:exported="true" />
 
         <activity android:name=".activity.PatternTest" />
         <activity android:name=".activity.InputSourceForTvView" />

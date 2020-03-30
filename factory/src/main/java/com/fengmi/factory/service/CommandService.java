@@ -103,7 +103,7 @@ public class CommandService extends BaseCmdService {
         }
         inOperating = false;
 
-        Log.i(TAG, "handleCommand cmdid : $cmdid para [$param]");
+        Log.i(TAG, "handleCommand cmdid : " + cmdid + " para :" + param);
         //now command status list just manager the activity function, so normal and
         //innActivity command should not be put into list
         Command c = null;
@@ -153,10 +153,8 @@ public class CommandService extends BaseCmdService {
             case TvCommandDescription.CMDID_MEDIA_STOP:
                 if (getTvRunningWindCmd() != null)
                     TvSetControlMsg(getTvRunningWindCmd(), FactorySetting.COMMAND_TASK_STOP, cmdid, param);
-                retFlag = true;
                 //2. stop burn timer
                 SDKManager.getMediaTestManager().agingSetTimerStatus(false);
-                mBinder.setResult_bool(cmdid, retFlag);
                 break;
             case TvCommandDescription.CMDID_N_TVVIEW_SOUR_SWITCH:
 
@@ -763,7 +761,6 @@ public class CommandService extends BaseCmdService {
                 mBinder.setResult_bool(cmdid, SDKManager.getInfoAccessManager().setPcbaSerialNumber(param));
                 break;
 
-
             case TvCommandDescription.CMDID_SERIAL_READ:
             case TvCommandDescription.CMDID_N_PCBA_SERIAL_READ:
                 result = SDKManager.getInfoAccessManager().getPcbaSerialNumber();
@@ -883,7 +880,7 @@ public class CommandService extends BaseCmdService {
 
             case TvCommandDescription.CMDID_N_ASSM_MANU_WRITE:
                 mBinder.setResult_bool(cmdid, SDKManager.getInfoAccessManager().setAssmManufactureNumber(param));
-
+                break;
 
             case TvCommandDescription.CMDID_N_ASSM_MANU_READ:
                 result = SDKManager.getInfoAccessManager().getAssmManufactureNumber();

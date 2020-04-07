@@ -1,9 +1,11 @@
-package com.fengmi.factory_impl_dependency;
+package com.fengmi.factory_impl_oversea_dependency;
 
 import android.content.Context;
 import android.util.Log;
 
 import com.fengmi.factory_test_interf.sdk_interf.AFCallback;
+import com.fengmi.factory_test_interf.sdk_interf.FengAFCallbackManager;
+import com.fengmi.factory_test_interf.sdk_interf.FengAFStepCheckInterf;
 import com.fengmi.factory_test_interf.sdk_interf.FengManagerInterf;
 
 import java.util.ArrayList;
@@ -148,6 +150,16 @@ public class FengManagerImpl implements FengManagerInterf {
     }
 
     @Override
+    public FengAFStepCheckInterf getAFCheckCallback(CountDownLatch latch) {
+        return new AFCheckCallback(latch);
+    }
+
+    @Override
+    public FengAFCallbackManager getAutoFocusCallback() {
+        return new AFCallbackCallback();
+    }
+
+    @Override
     public int getBacklight() {
         int ret = -1;
         int bri = projectorManager.getProjectorBrightness();
@@ -225,11 +237,11 @@ public class FengManagerImpl implements FengManagerInterf {
     /**
      * AF 回程差监听回调
      */
-    public static class AFCheckCallback extends MotorFocusCallback {
+    static class AFCheckCallback extends MotorFocusCallback implements FengAFStepCheckInterf {
         private CountDownLatch latch;
-        private int offset = -1;
+        private volatile int offset = -1;
 
-        public AFCheckCallback(CountDownLatch latch) {
+        AFCheckCallback(CountDownLatch latch) {
             this.latch = latch;
         }
 
@@ -254,7 +266,7 @@ public class FengManagerImpl implements FengManagerInterf {
     /**
      * 自动对焦回调
      */
-    public static class MyCallback extends MotorFocusCallback {
+    public static class AFCallbackCallback extends MotorFocusCallback implements FengAFCallbackManager {
         private List<AFCallback> afCallbackList = new ArrayList<>();
 
         @Override

@@ -4,7 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.fengmi.factory_impl_common.SDK_Common;
-import com.fengmi.factory_impl_dependency.SDK_Dependency;
+import com.fengmi.factory_impl_home_dependency.SDK_Dependency;
 import com.fengmi.factory_test_interf.SDKManager;
 
 public class FMApplication extends Application {

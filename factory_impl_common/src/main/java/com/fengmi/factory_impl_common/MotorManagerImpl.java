@@ -7,9 +7,10 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.fengmi.factory_impl_dependency.FengManagerImpl;
 import com.fengmi.factory_test_interf.SDKManager;
 import com.fengmi.factory_test_interf.sdk_interf.AFCallback;
+import com.fengmi.factory_test_interf.sdk_interf.FengAFCallbackManager;
+import com.fengmi.factory_test_interf.sdk_interf.FengAFStepCheckInterf;
 import com.fengmi.factory_test_interf.sdk_interf.MotorManagerInterf;
 import com.fengmi.factory_test_interf.sdk_utils.ThreadUtils;
 
@@ -23,12 +24,13 @@ import java.util.concurrent.Future;
 public class MotorManagerImpl implements MotorManagerInterf {
 
     private static volatile int mAFCheckOff = -1;
-    private FengManagerImpl.MyCallback callback;
+    private FengAFCallbackManager afCallbackManager;
     private Context context;
 
     MotorManagerImpl(Context context) {
-        callback = new FengManagerImpl.MyCallback();
+        afCallbackManager = SDKManager.getFengManagerInterf().getAutoFocusCallback();
         this.context = context;
+        SDKManager.getFengManagerInterf().setMotorEventCallback(afCallbackManager);
     }
 
 
@@ -46,12 +48,12 @@ public class MotorManagerImpl implements MotorManagerInterf {
 
     @Override
     public void setEventCallback(Context context, AFCallback afc) {
-        callback.addAFCallback(afc);
+        afCallbackManager.addAFCallback(afc);
     }
 
     @Override
     public void unsetEventCallback(Context context, AFCallback afc) {
-        callback.removeAFCallback(afc);
+        afCallbackManager.removeAFCallback(afc);
     }
 
     @Override
@@ -127,7 +129,7 @@ public class MotorManagerImpl implements MotorManagerInterf {
 
             SystemClock.sleep(1000);
 
-            FengManagerImpl.AFCheckCallback afCheckCallback = new FengManagerImpl.AFCheckCallback(latch);
+            FengAFStepCheckInterf afCheckCallback = SDKManager.getFengManagerInterf().getAFCheckCallback(latch);
             SDKManager.getFengManagerInterf().setMotorEventCallback(afCheckCallback);
             SDKManager.getFengManagerInterf().startAutoFocusCheck();
 

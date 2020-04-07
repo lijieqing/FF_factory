@@ -1,4 +1,4 @@
-package com.fengmi.factory_impl_dependency;
+package com.fengmi.factory_impl_home_dependency;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -87,8 +87,11 @@ public class SensorManagerImpl implements SensorManagerInterf {
         try {
             switch (step) {
                 case 0:
-                    tofService.setTofPerformRefSpadManagement((b, s) -> {
-                        Log.d(TAG, s);
+                    tofService.setTofPerformRefSpadManagement(new ITofService.setTofPerformRefSpadManagementCallback() {
+                        @Override
+                        public void onValues(byte b, String s) {
+                            Log.d(TAG, s);
+                        }
                     });
                     return true;
                 case 1:

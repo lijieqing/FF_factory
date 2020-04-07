@@ -334,6 +334,7 @@ public class TvCommandDescription {
 
     public static final int CMDID_AF_CHECK_START = 0x14FC;
     public static final int CMDID_AF_CHECK_OFFSET_READ = 0x14FD;
+    public static final int CMDID_PIC_RATIO = 0x14FE;
     /**************4. define CommandType***********************/
     public static final String CMD_TYPE_COMMON = "1";
     public static final String CMD_TYPE_ACTIVITY_ON = "2";
@@ -346,6 +347,8 @@ public class TvCommandDescription {
     public static final String CMD_TYPE_INNACTIVITY = "4";
     /**************5. define cmdDesc***********************/
     public static final String[][] cmdDesc = {
+            {Integer.toHexString(CMDID_PIC_RATIO).toUpperCase(), "set Pic Ratio", CMD_TYPE_COMMON, "SKIP"},
+
             {Integer.toHexString(CMDID_AF_CHECK_START).toUpperCase(), "write MI ternary key", CMD_TYPE_COMMON, "SKIP"},
             {Integer.toHexString(CMDID_AF_CHECK_OFFSET_READ).toUpperCase(), "write MI ternary key", CMD_TYPE_COMMON, "SKIP"},
 

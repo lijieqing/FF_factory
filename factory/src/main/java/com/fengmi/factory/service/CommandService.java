@@ -218,6 +218,18 @@ public class CommandService extends BaseCmdService {
                 }
                 break;
             /*===================================case for Activity control end======================================*/
+            case TvCommandDescription.CMDID_PIC_RATIO:
+                String[] picParams = param.split(",");
+                int picLen = picParams.length;
+                if (picLen == 2) {
+                    int srcID = Integer.parseInt(picParams[0]);
+                    int modeID = Integer.parseInt(picParams[1]);
+                    mBinder.setResult_bool(cmdid, SDKManager.getAmlogicManagerInterf().setDisplayMode(srcID,modeID));
+                } else {
+                    mBinder.setResult_bool(cmdid, false);
+                }
+                break;
+
             case TvCommandDescription.CMDID_AF_CHECK_START:
 
             case TvCommandDescription.CMDID_FUNC_TEST:

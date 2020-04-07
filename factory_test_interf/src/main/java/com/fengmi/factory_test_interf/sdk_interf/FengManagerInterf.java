@@ -1,5 +1,7 @@
 package com.fengmi.factory_test_interf.sdk_interf;
 
+import java.util.concurrent.CountDownLatch;
+
 public interface FengManagerInterf extends BaseMiddleware {
     /*
      * ===========================================================================
@@ -79,6 +81,11 @@ public interface FengManagerInterf extends BaseMiddleware {
     int PROJECTOR_EVENT_ACTIVE = 1;
     int PROJECTOR_IR1_EVENT = 0;
     int PROJECTOR_IR2_EVENT = 1;
+    /*
+     * ===========================================================================
+     * ========================     Feng OS Audio    ===========================
+     * ===========================================================================
+     */
 
     int transOutputMode(int factoryMode);
 
@@ -87,6 +94,12 @@ public interface FengManagerInterf extends BaseMiddleware {
     boolean setCurAudioMute(int mute);
 
     boolean setAudioOutputDevice(int deviceID);
+
+    /*
+     * ===========================================================================
+     * ========================     Feng OS keystone   ===========================
+     * ===========================================================================
+     */
 
     int SetKeystoneSelectMode(int mode);
 
@@ -101,6 +114,12 @@ public interface FengManagerInterf extends BaseMiddleware {
     int SetKeystoneLoad();
 
     int SetKeystoneCancel();
+
+    /*
+     * ===========================================================================
+     * ========================     Feng OS motor   ===========================
+     * ===========================================================================
+     */
 
     boolean setMotorConfig(int direction, int speed, int period);
 
@@ -119,6 +138,16 @@ public interface FengManagerInterf extends BaseMiddleware {
     int tofAutoFocusCheck(int arg);
 
     int tofAutoFocus(int step);
+
+    FengAFStepCheckInterf getAFCheckCallback(CountDownLatch latch);
+
+    FengAFCallbackManager getAutoFocusCallback();
+
+    /*
+     * ===========================================================================
+     * ========================     Feng OS projector   ===========================
+     * ===========================================================================
+     */
 
     int getBacklight();
 

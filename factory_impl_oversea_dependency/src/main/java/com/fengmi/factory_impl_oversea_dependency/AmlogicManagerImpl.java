@@ -1,4 +1,4 @@
-package com.fengmi.factory_impl_dependency;
+package com.fengmi.factory_impl_oversea_dependency;
 
 import android.util.Log;
 
@@ -471,6 +471,28 @@ public class AmlogicManagerImpl implements AmlogicManagerInterf {
     @Override
     public int handleGPIO(String portName, boolean isOut, int edge) {
         return tvControlManager.handleGPIO(portName, isOut, edge);
+    }
+
+    @Override
+    public boolean setDisplayMode(int srcID, int mode) {
+        int inputSrc;
+        SystemControlManager.SourceInput[] srcSS = SystemControlManager.SourceInput.values();
+        if (srcID < srcSS.length) {
+            inputSrc = srcSS[srcID].toInt();
+        } else {
+            return false;
+        }
+
+        SystemControlManager.Display_Mode dm;
+        SystemControlManager.Display_Mode[] modeSS = SystemControlManager.Display_Mode.values();
+        if (mode < modeSS.length) {
+            dm = modeSS[mode];
+        } else {
+            return false;
+        }
+
+        mSystenControl.SetDisplayMode(inputSrc, dm, 1);
+        return true;
     }
 
     private SystemControlManager.color_temperature getColorTempFrmParam(String gain) {

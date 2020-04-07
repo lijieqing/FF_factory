@@ -12,7 +12,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/factory" />
             <option value="$PROJECT_DIR$/factory_impl_common" />
-            <option value="$PROJECT_DIR$/factory_impl_dependency" />
+            <option value="$PROJECT_DIR$/factory_impl_home_dependency" />
+            <option value="$PROJECT_DIR$/factory_impl_oversea_dependency" />
             <option value="$PROJECT_DIR$/factory_test_interf" />
             <option value="$PROJECT_DIR$/fengmicomm" />
             <option value="$PROJECT_DIR$/libZXing" />

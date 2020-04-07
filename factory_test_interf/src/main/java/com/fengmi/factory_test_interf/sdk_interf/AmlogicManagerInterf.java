@@ -98,5 +98,5 @@ public interface AmlogicManagerInterf extends BaseMiddleware {
 
     int handleGPIO(String portName, boolean isOut, int edge);
 
-
+    boolean setDisplayMode(int srcID,int mode);
 }

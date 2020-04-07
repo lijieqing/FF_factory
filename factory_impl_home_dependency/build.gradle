@@ -20,12 +20,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    //api project(path: ':factory_impl_oversea_dependency')
-    api project(path: ':factory_impl_home_dependency')
+    api files('/Users/lijie/fm-libs/fengmi_sdk_ironman.jar')
+    api files('/Users/lijie/fm-libs/droid_api_ironman.jar')
+    api files('/Users/lijie/fm-libs/droid_tv_ironman.jar')
+
+    compileOnly files('/Users/lijie/fm-libs/p_frameworks.jar')
+
+    api project(path: ':factory_test_interf')
 }

@@ -1,4 +1,4 @@
-package com.fengmi.factory_impl_dependency;
+package com.fengmi.factory_impl_home_dependency;
 
 import android.content.Context;
 import android.hardware.hdmi.HdmiControlManager;

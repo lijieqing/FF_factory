@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.droidlogic.app.SystemControlManager;
 import com.fengmi.factory_test_interf.SDKManager;
+import com.fengmi.factory_test_interf.sdk_globle.FactorySetting;
 import com.fengmi.factory_test_interf.sdk_interf.AFCallback;
 import com.fengmi.factory_test_interf.sdk_interf.SensorManagerInterf;
 import com.fengmi.factory_test_interf.sdk_utils.ShellUtil;
@@ -268,7 +269,7 @@ public class SensorManagerImpl implements SensorManagerInterf {
                 int[] steps = new int[t];
                 //open AF Pattern
                 Intent intent = new Intent();
-                intent.setComponent(new ComponentName("com.fengmi.factory_test", "com.fengmi.factory_test.activity.PicTest"));
+                intent.setComponent(new ComponentName(FactorySetting.APPLICATION_PACKAGE_NAME, FactorySetting.ACTIVITY_PIC_TEST));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("commandid", "14CB");
                 intent.putExtra("commandparas", "fake");
@@ -292,8 +293,8 @@ public class SensorManagerImpl implements SensorManagerInterf {
                 if (stepSplit > delta) {
                     //关闭测试画面
                     Intent finishIntent = new Intent();
-                    finishIntent.setAction("com.fengmi.factory_test.activity.PicTest.Finish");
-                    finishIntent.putExtra("finish", true);
+                    finishIntent.setAction(FactorySetting.ACTION_PIC_TEST_FINISH);
+                    finishIntent.putExtra(FactorySetting.EXTRA_PIC_TEST_NAME, true);
                     context.sendBroadcast(finishIntent);
                     SystemClock.sleep(1000);
                     return false;
@@ -311,8 +312,8 @@ public class SensorManagerImpl implements SensorManagerInterf {
 
                 //关闭测试画面
                 Intent finishIntent = new Intent();
-                finishIntent.setAction("com.fengmi.factory_test.activity.PicTest.Finish");
-                finishIntent.putExtra("finish", true);
+                finishIntent.setAction(FactorySetting.ACTION_PIC_TEST_FINISH);
+                finishIntent.putExtra(FactorySetting.ACTION_PIC_TEST_FINISH, true);
                 context.sendBroadcast(finishIntent);
                 return true;
             } else {
@@ -325,7 +326,7 @@ public class SensorManagerImpl implements SensorManagerInterf {
     /**
      * 线程任务：自动对焦状态监听，当检测到对焦完成后记录当前马达步数
      */
-    private class AFStepCallback implements Callable<String>, AFCallback {
+    private static class AFStepCallback implements Callable<String>, AFCallback {
         private Context context;
         private CountDownLatch downLatch = new CountDownLatch(1);
 

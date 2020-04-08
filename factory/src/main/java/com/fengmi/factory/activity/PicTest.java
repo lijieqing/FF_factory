@@ -46,7 +46,7 @@ public class PicTest extends BaseActivity {
         super.onCreate(savedInstanceState);
         fR = new FinishReceiver(this);
         IntentFilter filter = new IntentFilter();
-        filter.addAction("com.fengmi.factory_test.activity.PicTest.Finish");
+        filter.addAction(FactorySetting.ACTION_PIC_TEST_FINISH);
         this.registerReceiver(fR, filter);
     }
 
@@ -89,7 +89,7 @@ public class PicTest extends BaseActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            boolean finish = intent.getBooleanExtra("finish", false);
+            boolean finish = intent.getBooleanExtra(FactorySetting.ACTION_PIC_TEST_FINISH, false);
             if (finish) {
                 picTest.finish();
             }

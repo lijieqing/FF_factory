@@ -129,6 +129,7 @@ public class CommandService extends BaseCmdService {
         Log.i(TAG, "handleCommand cmdid :" + id);
 
         switch (id) {
+            case TvCommandDescription.CMDID_FUNC_TEST:
             /*===================================case for Activity control start======================================*/
             case TvCommandDescription.CMDID_USB_MEDIA_PLAY:
             case TvCommandDescription.CMDID_CAMERA_TEST_ON:
@@ -231,8 +232,6 @@ public class CommandService extends BaseCmdService {
                 break;
 
             case TvCommandDescription.CMDID_AF_CHECK_START:
-
-            case TvCommandDescription.CMDID_FUNC_TEST:
                 mBinder.setResult_bool(cmdid, SDKManager.getMotorManager().startAFCheck());
                 break;
 
@@ -1606,6 +1605,12 @@ public class CommandService extends BaseCmdService {
         prepareFactorytestTV();
         //FM JIRA PROJECTOR-412
         mHandler.postDelayed(mDisableBodyDetect, 10);
+        //connAppo();
+    }
+
+    private void connAppo() {
+        NetworkUtil.scanWifiInfo(this);
+        NetworkUtil.connectWifi(this, "appo-5G", "fm@567765", "WPA");
     }
 
     //TV
@@ -1671,10 +1676,10 @@ public class CommandService extends BaseCmdService {
         }
         String[] cmdInfo = cmd.split("/");
         if (cmdInfo.length > 0) {
-            if (cmdInfo.length == 1 && TextUtils.isEmpty(cmdInfo[0])) {
+            if (cmdInfo.length == 1 && !TextUtils.isEmpty(cmdInfo[0])) {
                 Log.i(TAG, "auto Run cmd id=" + cmdInfo[0] + ")");
                 id = cmdInfo[0];
-            } else if (cmdInfo.length == 2 && TextUtils.isEmpty(cmdInfo[0])) {
+            } else if (cmdInfo.length == 2 && !TextUtils.isEmpty(cmdInfo[0])) {
                 Log.i(TAG, "auto Run cmd id=" + cmdInfo[0] + ", param=" + cmdInfo[1]);
                 id = cmdInfo[0];
                 para = cmdInfo[1];
@@ -1691,26 +1696,26 @@ public class CommandService extends BaseCmdService {
 
     public String changeStringToAscII(String src) {
         int dest_byte;
-        String dest = "";
+        StringBuilder dest = new StringBuilder();
         String[] srcs = null;
         srcs = src.split(",");
         for (int i = 0; i < srcs.length; i++) {
             Log.i(TAG, "srcs[" + i + "] = [" + srcs[i] + "]");
             if (srcs[i] != null && srcs[i].matches("[0-9]+")) {
                 dest_byte = Integer.parseInt(srcs[i]);
-                dest += (char) dest_byte;
+                dest.append((char) dest_byte);
             } else {
                 Log.i(TAG, "paras is abnormal <" + srcs[i] + ">");
             }
         }
-        return dest;
+        return dest.toString();
     }
 
     public String changeStringToIP(String src) {
         int dest_byte;
         String dest = "";
         Log.i(TAG, "changeStringToIP : src [" + src + "]");
-        String srcs[] = src.split(",");
+        String[] srcs = src.split(",");
         for (int i = 0; i < srcs.length - 1; i++) {
             dest_byte = Integer.parseInt(srcs[i]);
             Log.i(TAG, "changeStringToIP : dest_byte [" + dest_byte + "]");

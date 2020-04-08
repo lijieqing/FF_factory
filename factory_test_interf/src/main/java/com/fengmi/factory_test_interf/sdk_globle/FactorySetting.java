@@ -46,7 +46,11 @@ public class FactorySetting {
 	public static final String NAME_PRODUCT_TYPE_TV = "TV";
 	public static final String NAME_PRODUCT_TYPE_BOX = "BOX";
 	public static final String NAME_PRODUCT_TYPE_PROJECTOR = "Proj";
-    //TODO, you should add your command dependency
+	//Action For Impl
+    public static final String APPLICATION_PACKAGE_NAME = "com.fengmi.factory";
+    public static final String ACTIVITY_PIC_TEST = "com.fengmi.factory.activity.PicTest";
+    public static final String ACTION_PIC_TEST_FINISH = "com.fengmi.factory.activity.PicTest.Finish";
+    public static final String EXTRA_PIC_TEST_NAME = "finish";
     //{"cmdA","cmdB"} mean cmdA depend cmdB
     //here we think one command just depend on one command because only one foreground activity
     public static final String Cmd_Dependency[][] = {

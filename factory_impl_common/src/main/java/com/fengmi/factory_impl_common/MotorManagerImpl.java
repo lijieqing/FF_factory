@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.fengmi.factory_test_interf.SDKManager;
+import com.fengmi.factory_test_interf.sdk_globle.FactorySetting;
 import com.fengmi.factory_test_interf.sdk_interf.AFCallback;
 import com.fengmi.factory_test_interf.sdk_interf.FengAFCallbackManager;
 import com.fengmi.factory_test_interf.sdk_interf.FengAFStepCheckInterf;
@@ -121,7 +122,7 @@ public class MotorManagerImpl implements MotorManagerInterf {
             CountDownLatch latch = new CountDownLatch(1);
 
             Intent intent = new Intent();
-            intent.setComponent(new ComponentName("com.fengmi.factory", "com.fengmi.factory.activity.PicTest"));
+            intent.setComponent(new ComponentName(FactorySetting.APPLICATION_PACKAGE_NAME, FactorySetting.ACTIVITY_PIC_TEST));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra("commandid", "14CB");
             intent.putExtra("commandparas", "fake");
@@ -138,8 +139,8 @@ public class MotorManagerImpl implements MotorManagerInterf {
             SystemClock.sleep(1000);
 
             Intent finishIntent = new Intent();
-            finishIntent.setAction("com.fengmi.factory_test.activity.PicTest.Finish");
-            finishIntent.putExtra("finish", true);
+            finishIntent.setAction(FactorySetting.ACTION_PIC_TEST_FINISH);
+            finishIntent.putExtra(FactorySetting.ACTION_PIC_TEST_FINISH, true);
             context.sendBroadcast(finishIntent);
 
             SDKManager.getFengManagerInterf().unsetMotorEventCallback(afCheckCallback);

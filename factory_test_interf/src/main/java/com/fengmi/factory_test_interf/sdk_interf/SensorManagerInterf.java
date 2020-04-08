@@ -66,4 +66,12 @@ public interface SensorManagerInterf extends BaseMiddleware{
      * @return 对焦成功、失败
      */
     boolean startTofAF(Context context);
+
+    /**
+     * 获取理论步数，请在校准完2M 的步数后使用
+     *
+     * @param distance 距离
+     * @return step 理论步数
+     */
+    String getStepByAlgorithm(String distance);
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.RemoteException;
 import android.os.SystemClock;
+import android.os.SystemProperties;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -228,7 +229,31 @@ public class SensorManagerImpl implements SensorManagerInterf {
         return false;
     }
 
-    private class getTofMeasureDataCallback implements ITofService.getTofMeasureDataCallback {
+    @Override
+    public String getStepByAlgorithm(String distance) {
+        //设置为 true 表示开启算法计算模式
+        SystemProperties.set("persist.sys.formovie.theory", "true");
+        if (!SystemProperties.get("persist.sys.formovie.theory", "false").equals("true")) {
+            return "prop set error";
+        }
+        int dis;
+        if (!TextUtils.isEmpty(distance) && TextUtils.isDigitsOnly(distance)) {
+            try {
+                dis = Integer.parseInt(distance);
+                String res = tofManager.getStepByDistance(dis) + "";
+                Log.d(TAG, "getStepByAlgorithm is " + res);
+                return res;
+            } finally {
+                SystemProperties.set("persist.sys.formovie.theory", "false");
+                Log.d(TAG, "finally reset Prop value = " + SystemProperties.get("persist.sys.formovie.theory"));
+            }
+        } else {
+            return "param error";
+        }
+    }
+
+
+    private static class getTofMeasureDataCallback implements ITofService.getTofMeasureDataCallback {
         String distance = "no-cb";
 
         @Override

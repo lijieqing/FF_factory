@@ -44,4 +44,9 @@ public class SensorManagerDefault implements SensorManagerInterf {
     public boolean startTofAF(Context context) {
         return false;
     }
+
+    @Override
+    public String getStepByAlgorithm(String distance) {
+        return null;
+    }
 }

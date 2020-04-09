@@ -39,9 +39,9 @@ public class LocalMediaAF extends BaseActivity implements
     private CameraView mCameraView = null;
     private Timer autoFocusTimer = null;
     private String[] MediaSour = new String[]{
-            "/system/factory/autovideo_4k2k.mov",
-            "/system/factory/autovideo_vp9.mkv",
-            "/system/factory/autovideo_white.m2t"};
+            "/vendor/factory/autovideo_4k2k.mov",
+            "/vendor/factory/autovideo_vp9.mkv",
+            "/vendor/factory/autovideo_white.m2t"};
 
     @Override
     public void onCompletion(MediaPlayer mp) {

@@ -49,4 +49,9 @@ public class SensorManagerDefault implements SensorManagerInterf {
     public String getStepByAlgorithm(String distance) {
         return null;
     }
+
+    @Override
+    public boolean checkStepAlgorithm(String threshold) {
+        return false;
+    }
 }

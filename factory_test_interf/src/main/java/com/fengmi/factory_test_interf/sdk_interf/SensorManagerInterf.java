@@ -74,4 +74,12 @@ public interface SensorManagerInterf extends BaseMiddleware{
      * @return step 理论步数
      */
     String getStepByAlgorithm(String distance);
+
+    /**
+     * 检测 Step 算法是否符合预期
+     *
+     * @param threshold 阈值
+     * @return true：符合
+     */
+    boolean checkStepAlgorithm(String threshold);
 }

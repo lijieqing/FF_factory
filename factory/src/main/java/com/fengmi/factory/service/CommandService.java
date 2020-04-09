@@ -219,13 +219,22 @@ public class CommandService extends BaseCmdService {
                 }
                 break;
             /*===================================case for Activity control end======================================*/
+
+            case TvCommandDescription.CMDID_CHECK_STEP_ALGORITHM:
+                mBinder.setResult_bool(cmdid, SDKManager.getSensorManager().checkStepAlgorithm(param));
+                break;
+
+            case TvCommandDescription.CMDID_GET_STEP_ALGORITHM:
+                mBinder.setResult_string(cmdid, SDKManager.getSensorManager().getStepByAlgorithm(param));
+                break;
+
             case TvCommandDescription.CMDID_PIC_RATIO:
                 String[] picParams = param.split(",");
                 int picLen = picParams.length;
                 if (picLen == 2) {
                     int srcID = Integer.parseInt(picParams[0]);
                     int modeID = Integer.parseInt(picParams[1]);
-                    mBinder.setResult_bool(cmdid, SDKManager.getAmlogicManagerInterf().setDisplayMode(srcID,modeID));
+                    mBinder.setResult_bool(cmdid, SDKManager.getAmlogicManagerInterf().setDisplayMode(srcID, modeID));
                 } else {
                     mBinder.setResult_bool(cmdid, false);
                 }

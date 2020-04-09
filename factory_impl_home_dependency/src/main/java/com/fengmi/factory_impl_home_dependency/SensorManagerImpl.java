@@ -18,6 +18,7 @@ import com.fengmi.factory_test_interf.sdk_utils.ShellUtil;
 import com.fengmi.factory_test_interf.sdk_utils.ThreadUtils;
 
 import java.util.Arrays;
+import java.util.SortedSet;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
@@ -27,6 +28,7 @@ import java.util.concurrent.TimeUnit;
 import fengmi.hardware.MotorManager;
 import fengmi.hardware.TofManager;
 import fengmi.hardware.TofNode;
+import fengmi.hardware.TofTable;
 import vendor.fengmi.hardware.tof.V1_0.ITofService;
 import vendor.fengmi.hardware.tof.V1_0.RangingData;
 
@@ -252,6 +254,23 @@ public class SensorManagerImpl implements SensorManagerInterf {
         }
     }
 
+    @Override
+    public boolean checkStepAlgorithm(String threshold) {
+        if (TextUtils.isEmpty(threshold) || !TextUtils.isDigitsOnly(threshold)) {
+            Log.d(TAG, "checkStepAlgorithm param is illegal");
+            return false;
+        }
+        TofAlgorithmCheck tofAlgorithmCheck = new TofAlgorithmCheck(Integer.parseInt(threshold));
+        Future<Boolean> task = ThreadUtils.runBoolTask(tofAlgorithmCheck);
+        try {
+            return task.get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+            Log.d(TAG, "checkStepAlgorithm Exception is" + e);
+        }
+        return false;
+    }
+
 
     private static class getTofMeasureDataCallback implements ITofService.getTofMeasureDataCallback {
         String distance = "no-cb";
@@ -261,6 +280,47 @@ public class SensorManagerImpl implements SensorManagerInterf {
             Log.d(TAG, rangingData.RangeStatus + "sssss");
             Log.d(TAG, rangingData.RangeMilliMeter + "sssss");
             distance = rangingData.RangeMilliMeter + "";
+        }
+    }
+
+    /**
+     * 比对 Tof Step 算法与实际自动对焦采集算法获取的步数差异
+     */
+    private class TofAlgorithmCheck implements Callable<Boolean> {
+        private int threshold;
+
+        TofAlgorithmCheck(int threshold) {
+            this.threshold = threshold;
+        }
+
+        @Override
+        public Boolean call() throws Exception {
+            SystemProperties.set("persist.sys.formovie.theory", "true");
+            if (!SystemProperties.get("persist.sys.formovie.theory", "false").equals("true")) {
+                Log.d(TAG, "TofAlgorithmCheck prop set error");
+                return false;
+            }
+            try {
+                TofTable table = tofManager.getTofTable();
+                SortedSet<TofNode> nodes = table.getNodeSet();
+                int max = 0;
+                int dis;
+                int afStep;
+                int calcStep;
+                for (TofNode node : nodes) {
+                    dis = node.getDistance();
+                    afStep = node.getStep();
+                    calcStep = tofManager.getStepByDistance(dis);
+                    max = Math.max(max, Math.abs(afStep - calcStep));
+                    Log.d(TAG, "AlgorithmCheck read dis=" + dis);
+                    Log.d(TAG, "AlgorithmCheck read afStep=" + afStep + ",calcStep=" + calcStep);
+                    Log.d(TAG, "AlgorithmCheck read max=" + max + ",threshold=" + threshold);
+                }
+                return max > threshold;
+            } finally {
+                SystemProperties.set("persist.sys.formovie.theory", "false");
+                Log.d(TAG, "finally reset Prop value = " + SystemProperties.get("persist.sys.formovie.theory"));
+            }
         }
     }
 

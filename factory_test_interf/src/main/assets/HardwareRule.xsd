@@ -14,6 +14,7 @@
                                     <attribute name="Desc" use="required" type="fm:string" />
                                     <attribute name="HardwareID" use="required" type="fm:integer" />
                                     <attribute name="Keyboard" use="required" type="fm:boolean" />
+                                    <attribute name="MiPackage" use="required" type="fm:boolean" />
                                 </fm:complexType>
                             </fm:element>
                         </fm:sequence>

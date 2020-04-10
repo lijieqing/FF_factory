@@ -596,9 +596,8 @@ public class UtilManagerImpl implements UtilManagerInterf {
     private boolean writeVcom(String para) {
         boolean ret = false;
         Log.i(TAG, "set Vcom command");
-        //mSystemControl.writeSysFs("sys/class/gpio/gpio199/value","1");
-        //SystemClock.sleep(100);
-        byte command_byte[] = toHexString(para).getBytes();
+
+        byte[] command_byte = toHexString(para).getBytes();
         try {
             FileOutputStream fstream = new FileOutputStream("/sys/class/i2c/slave");
             fstream.write(command_byte, 0, command_byte.length - 1);
@@ -753,8 +752,8 @@ public class UtilManagerImpl implements UtilManagerInterf {
         return true;
     }
 
-    private boolean rebootSystemFranky() {
-        Log.i(TAG, "=================135、185 switch system===================");
+    private boolean rebootSystemFormatData() {
+        Log.i(TAG, "=================Mi User Package switch===================");
         Log.i(TAG, "reset system (master clear), and restore user system from backup partition");
         echoEntry(switchCmdPath, PROP_PRODUCT_FORMAT_DATA);
         PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
@@ -764,8 +763,8 @@ public class UtilManagerImpl implements UtilManagerInterf {
     }
 
 
-    private boolean rebootSystemGoblinPro() {
-        Log.i(TAG, "=================135Pro switch system===================");
+    private boolean rebootSystemWipeData() {
+        Log.i(TAG, "=================F Mi User Package switch===================");
         Log.i(TAG, "reset system (master clear), and restore user system from backup partition");
         echoEntry(switchCmdPath, PROP_PRODUCT_WIPEDATA);
         PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
@@ -935,12 +934,12 @@ public class UtilManagerImpl implements UtilManagerInterf {
                         //     e.printStackTrace();
                         // }
                         //用于以后，切换用户使用，用来替换上述 reboot 指令
-                        // TODO: 2020-01-07  针对小米系列用户包，请使用rebootSystemFranky
-                        // TODO: 2020-01-07  针对峰米系列或海外用户包，请使用rebootSystemGoblinPro
-                        if (getHardwareID().equals("0")) {
-                            rebootSystemGoblinPro();
+                        // TODO: 2020-01-07  针对小米系列用户包，请使用rebootSystemFormatData
+                        // TODO: 2020-01-07  针对峰米系列或海外用户包，请使用rebootSystemWipeData
+                        if (SDKManager.getHwManager().getHW().getMiPackage()) {
+                            rebootSystemFormatData();
                         } else {
-                            rebootSystemFranky();
+                            rebootSystemWipeData();
                         }
                     } else {
                         Log.i(TAG, "switchsys failed , factory_to_user is " + res);

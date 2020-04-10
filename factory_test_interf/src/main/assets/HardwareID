@@ -1,34 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <HardwareList xmlns="http://www.fengmi.com">
     <Project Name="EVA">
-        <Hardware Name="FM05-G" HardwareID="1" Desc="05G海外版" Keyboard="true"/>
-        <Hardware Name="M055FGN" HardwareID="12" Desc="055海外版" Keyboard="false"/>
+        <Hardware Desc="05G海外版" HardwareID="1" Keyboard="true" MiPackage="false" Name="FM05-G" />
+        <Hardware Desc="055海外版" HardwareID="12" Keyboard="false" MiPackage="false" Name="M055FGN" />
     </Project>
     <Project Name="FRANKY">
-        <Hardware Name="L185JCN_1" HardwareID="11" Desc="185-4步马达" Keyboard="true"/>
-        <Hardware Name="L185JCN_0" HardwareID="12" Desc="185-8步马达" Keyboard="true"/>
+        <Hardware Desc="185-4步马达" HardwareID="11" Keyboard="true" MiPackage="true"
+            Name="L185JCN_1" />
+        <Hardware Desc="185-8步马达" HardwareID="12" Keyboard="true" MiPackage="true"
+            Name="L185JCN_0" />
     </Project>
     <Project Name="GOBLIN">
-        <Hardware Name="M135FCN-PRO" HardwareID="0" Desc="135 Pro" Keyboard="true"/>
-        <Hardware Name="M135JCN" HardwareID="1" Desc="135 米家" Keyboard="true"/>
-        <Hardware Name="M135FCN" HardwareID="10" Desc="135 LED" Keyboard="true"/>
+        <Hardware Desc="135 Pro" HardwareID="0" Keyboard="true" MiPackage="false"
+            Name="M135FCN-PRO" />
+        <Hardware Desc="135 米家" HardwareID="1" Keyboard="true" MiPackage="false" Name="M135JCN" />
+        <Hardware Desc="135 LED" HardwareID="10" Keyboard="true" MiPackage="true" Name="M135FCN" />
     </Project>
     <Project Name="IRONMAN">
-        <Hardware Name="M045JCN" HardwareID="2" Desc="045 米家" Keyboard="true"/>
-        <Hardware Name="M085JCN" HardwareID="3" Desc="085 米家" Keyboard="true"/>
+        <Hardware Desc="045 米家" HardwareID="2" Keyboard="true" MiPackage="false" Name="M045JCN" />
+        <Hardware Desc="085 米家" HardwareID="3" Keyboard="true" MiPackage="false" Name="M085JCN" />
     </Project>
     <Project Name="JERRY">
-        <Hardware Name="L306ACF" HardwareID="0" Desc="306 光峰" Keyboard="true"/>
-        <Hardware Name="L406FCN" HardwareID="1" Desc="406 峰米" Keyboard="true"/>
-        <Hardware Name="L186FCN" HardwareID="2" Desc="185 峰米" Keyboard="true"/>
-        <Hardware Name="L176FCN-Pro" HardwareID="10" Desc="176 峰米 Pro" Keyboard="true"/>
+        <Hardware Desc="306 光峰" HardwareID="0" Keyboard="true" MiPackage="false" Name="L306ACF" />
+        <Hardware Desc="406 峰米" HardwareID="1" Keyboard="true" MiPackage="false" Name="L406FCN" />
+        <Hardware Desc="185 峰米" HardwareID="2" Keyboard="true" MiPackage="false" Name="L186FCN" />
+        <Hardware Desc="176 峰米 Pro" HardwareID="10" Keyboard="true" MiPackage="false"
+            Name="L176FCN-Pro" />
     </Project>
     <Project Name="ANGLEE">
-        <Hardware Name="FM18" HardwareID="0" Desc="15s海外版" Keyboard="false"/>
+        <Hardware Desc="15s海外版" HardwareID="0" Keyboard="false" MiPackage="false" Name="FM18" />
     </Project>
     <Project Name="angleeUHD">
-        <Hardware Name="L156MGN" HardwareID="12" Desc="154k海外版" Keyboard="false"/>
-        <Hardware Name="L176FGN" HardwareID="6" Desc="峰米176海外版" Keyboard="true"/>
+        <Hardware Desc="154k海外版" HardwareID="12" Keyboard="false" MiPackage="false"
+            Name="L156MGN" />
+        <Hardware Desc="峰米176海外版" HardwareID="6" Keyboard="true" MiPackage="false" Name="L176FGN" />
     </Project>
 
 </HardwareList>

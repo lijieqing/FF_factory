@@ -13,6 +13,8 @@ public class Hardware {
     private String Desc;
     @XmlAttribute(name = "Keyboard")
     private Boolean Keyboard;
+    @XmlAttribute(name = "MiPackage")
+    private Boolean MiPackage;
 
     public Hardware() {
     }
@@ -49,6 +51,14 @@ public class Hardware {
         Keyboard = keyboard;
     }
 
+    public Boolean getMiPackage() {
+        return MiPackage;
+    }
+
+    public void setMiPackage(Boolean miPackage) {
+        MiPackage = miPackage;
+    }
+
     @Override
     public String toString() {
         return "Hardware{" +
@@ -56,6 +66,7 @@ public class Hardware {
                 ", HardwareID='" + HardwareID + '\'' +
                 ", Desc='" + Desc + '\'' +
                 ", Keyboard=" + Keyboard +
+                ", MiPackage=" + MiPackage +
                 '}';
     }
 }
